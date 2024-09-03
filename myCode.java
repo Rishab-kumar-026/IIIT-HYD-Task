@@ -39,28 +39,14 @@ class Lift {
         // Sort destinations so the lift moves in ascending order of floors
         Arrays.sort(destinations);
 
-        for (int i = 0; i < destinations.length; ) {
+        for (int i = 0; i < destinations.length;i++ ) {
             int destination_Floor = destinations[i];
             System.out.println("Lift is moving from floor " + currentFloor + " to floor " + destination_Floor + "...");
             currentFloor = destination_Floor;
             System.out.println("Lift reached floor " + currentFloor);
-
-            // Count how many people have the same destination
-            int count = 1;
-            while (i + count < destinations.length && destinations[i + count] == destination_Floor) {
-                count++;
-            }
-
-            exit_lift(count);
-            i += count;  // Skip to the next unique destination floor
-        }
-    }
-
-    public void exit_lift(int count) {
-        if (count == 1) {
-            System.out.println("1 person exited the lift at floor " + currentFloor);
-        } else {
-            System.out.println(count + " people exited the lift at floor " + currentFloor);
+            currentPeople--;
+            System.out.println("1 person left from the lift at floor " + currentFloor + " People remaining in the lift " + currentPeople);
+            
         }
     }
 
